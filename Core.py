@@ -10,8 +10,68 @@
 import PrivateKey
 import tweepy
 import random
+import requests
+import json
 
 
+class Core(object):
+    def __init__(self):
+        self.run_limit = 5  # max quotes from each user
+        self.url_1 = PrivateKey.USER_ONE_ENDP
+        self.url_2 = PrivateKey.USER_TWO_ENDP
+        self.user1 = PrivateKey.USER_ONE  # User1 = Donald Trump
+        self.user2 = PrivateKey.USER_TWO  # User2 = Kanye West
+
+    def extraction(self, user):
+        url = self.url_1
+        keyword = 'message'
+        all_quotes = []
+        if user == self.user2:
+            url = self.url_2
+            keyword = 'quote'
+
+        for x in range(self.run_limit):
+            r = requests.get(url)
+            quote_json = json.loads(r.text)
+            quote = str(quote_json[keyword])
+            all_quotes.append(quote)
+
+        return all_quotes
+
+    # Randomly picks a tweet and returns it
+    def play(self):
+        print('Getting resources for the game, please wait...')
+        arr_1 = self.extraction(self.user1)
+        arr_2 = self.extraction(self.user2)
+        tot_arr = arr_1
+        tot_arr.extend(arr_2)
+        rg = len(tot_arr)
+
+        replay = 'y'
+
+        while replay == 'y':
+            # Since not for crypto purpose, a pseudo-random number will do
+            i = random.randint(0, rg)
+            cor_ans = 'kanye'
+            if i < len(arr_1):
+                cor_ans = 'trump'
+
+            print('Welcome to Tweet guessing game, here is a tweet picked for you: ')
+            print(tot_arr[i])
+            ans = input('Is it from Donald Trump or Kanye West? Type \"Trump\" or \"Kanye\"')
+            ans.strip()
+            ans = ans.lower()
+
+            if ans == cor_ans:
+                print('Congratulations, you are correct, it is from', cor_ans)
+            else:
+                print('Good try, it is actually from', cor_ans)
+
+            replay = input('Would you like to play again? Type \"y\" or \"n\"')
+            replay.strip()
+            replay = replay.lower()
+
+'''
 class Core(object):
     def __init__(self):
         # Twitter OAuth, set access tokens and keys
@@ -92,4 +152,5 @@ class Core(object):
 
             replay = input('Would you like to play again? Type \"y\" or \"n\"')
             replay.strip()
-            replay = replay.lower()
+            replay = replay.lower()       '''
+
