@@ -27,7 +27,9 @@ A couple of things I want to mention before the program is reviewed.
    environment (venv) containing all the libraries is included in the GitHub repo. The only 
    library I needed to install was the "tweepy" library--a Twitter API wrapper. But again it
    technically was not used since all the code related it is commented out. Other libraries such 
-   as json and requests were installed along with Python itself.
+   as json and requests were installed along with Python itself. If for some reason the project
+   fails to run in other IDEs such as Spyder (I am not sure since I do not have Spyder installed),
+   please download Pycharm to run the project, it is free! Sorry for any potential inconvenience.
  
 4. This alternative version of the game only has 60 quotes--30 from Trump and 30 from Kanye. 
    Although I am able to extract 100 quotes from the Trump endpoint (did not try more since the 
