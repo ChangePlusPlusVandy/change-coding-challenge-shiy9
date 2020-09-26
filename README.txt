@@ -4,11 +4,11 @@ A couple of things I want to mention before the program is reviewed.
 
 1. I am in China at the moment and cannot access Twitter API even when using a VPN. I could open
    Twitter's webpage but cannot connect to the API with "connection failed, connected party did 
-   not respond" errors. I still wrote some code for the Twitter API solely based on what I 
-   "think" how the program should work since I cannot test the program. I emailed Ethan, and he
-   gave me two endpoints--one for quotes from Trump, one for quotes from Kanye--to work with as
-   an alternative option. That project is currently working, and the Twitter API part is 
-   commented out just to show that I tried it (as instructed by Ethan).
+   not respond" errors. I still wrote code for the Twitter API solely based on what I "think" how
+   the program should work since I cannot test the program. The code is commented out at the end of
+   Core.py. I emailed Ethan, and he gave me two endpoints--one for quotes from Trump, one for quotes
+   from Kanye--to work with as an alternative option. That project is currently working, and the
+   Twitter API part is commented out just to show that I tried it (as instructed by Ethan).
 
 2. I am most familiar with C++. However, I struggled a lot to find a useable HTTP request library
    for C++ (this is before I found out I cannot connect to Twitter API). I tried a library 
